@@ -8,11 +8,15 @@ namespace {
 
     /// Convenience function. Avoids having to type T twice. Will be
     /// in C++14.
+    #ifdef __cpp_lib_make_unique
+    using std::make_unique;
+    #else
     template <typename T, typename ... Args>
     std::unique_ptr<T> make_unique (Args && ... args)
     {
 	return std::unique_ptr<T>( new T(std::forward<Args>(args) ...) );
     }
+    #endif
 
 }
 
