@@ -31,6 +31,7 @@
 #include <vector>
 #include <memory>
 #include <mutex>
+#include <functional>
 
 #include "mgp.h"
 #include "pml.h"
