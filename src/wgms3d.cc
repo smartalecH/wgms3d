@@ -30,6 +30,7 @@
 #include <stdexcept>
 #include <cstring> // memset
 #include <numeric> // accumulate
+#include <functional>
 
 using std::complex;
 
