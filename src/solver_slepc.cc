@@ -29,14 +29,24 @@
 #include <cstring>
 #include <memory>
 #include <algorithm>
+#include <vector>
+#define PETSC_CLANGUAGE_CXX 1
 
 #include <boost/throw_exception.hpp>
+#include <petsc.h>
 
 #include <slepceps.h>
+#include <petscsys.h>
+#include <petscdmda.h>
+#include <petscksp.h>
+#include <petscerror.h>
+
 
 #include "solver.h"
 #include "make_unique.h"
 #include "complex_functions.h"
+
+
 
 namespace {
 
@@ -124,7 +134,8 @@ namespace {
 	    : n(matrix->n),
 	      mat(nullptr), eps(nullptr), xr(nullptr), xi(nullptr), local_vector(nullptr)
 	{
-	    MPI_Comm_rank(PETSC_COMM_WORLD, &rank);
+	    SlepcInitialize(NULL,NULL,(char *)0,NULL);
+		MPI_Comm_rank(MPI_COMM_WORLD, &rank);
 
 	    if(rank == 0 && is_matrix_real && std::is_same< PetscScalar, std::complex<double> >::value)
 	    {

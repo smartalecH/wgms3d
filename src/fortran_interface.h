@@ -24,8 +24,6 @@
 #include "config.h"
 
 #include "complex_functions.h"
-#include <slu_ddefs.h>
-
 
 extern "C"
 {
@@ -40,10 +38,9 @@ extern "C"
 				       int *incx, double *y, int *incy);
     extern void F77_FUNC(zaxpy,ZAXPY) (int *n, std::complex<double> *alpha, std::complex<double> *x,
 				       int *incx, std::complex<double> *y, int *incy);
-	/*
-	extern void F77_FUNC(dgemm,DGEMM) (char *TRANSA, char *TRANSB, int *M, int *N, int *K,
+    extern void F77_FUNC(dgemm,DGEMM) (char *TRANSA, char *TRANSB, int *M, int *N, int *K,
 				       double *ALPHA, double *A, int *LDA, double *B, int *LDB,
-				       double *BETA, double *C, int *LDC);*/
+				       double *BETA, double *C, int *LDC);
     extern void F77_FUNC(zgemm,ZGEMM) (char *TRANSA, char *TRANSB, int *M, int *N, int *K,
 				       std::complex<double> *ALPHA, std::complex<double> *A, int *LDA,
 				       std::complex<double> *B, int *LDB,
@@ -70,7 +67,7 @@ inline void AXPY (int n, std::complex<double> alpha, std::complex<double> *x,
 inline void GEMM (char *TRANSA, char *TRANSB, int *M, int *N, int *K,
 		  double *ALPHA, double *A, int *LDA, double *B, int *LDB,
 		  double *BETA, double *C, int *LDC) {
-    dgemm_(TRANSA, TRANSB, M, N, K, ALPHA, A, LDA, B, LDB, BETA, C, LDC); }
+    F77_FUNC(dgemm,DGEMM) (TRANSA, TRANSB, M, N, K, ALPHA, A, LDA, B, LDB, BETA, C, LDC); }
 inline void GEMM (char *TRANSA, char *TRANSB, int *M, int *N, int *K,
 		  std::complex<double> *ALPHA, std::complex<double> *A, int *LDA,
 		  std::complex<double> *B, int *LDB,
@@ -140,4 +137,3 @@ void matrix_copy (T *dst,
 }
 
 #endif // _FORTRAN_INTERFACE_H
-
