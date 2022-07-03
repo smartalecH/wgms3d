@@ -33,13 +33,14 @@ Clone the SUPERLU repository:
 
 Install SUPERLU:
 
-  cd superlu
+  ```cd superlu
   mkdir build
   cd build
   cmake ..
   make
   sudo make install
   cd ../..
+  ```
 
 ## ARPACK-NG installation
 
@@ -49,26 +50,28 @@ Clone the ARPACK-NG repository:
 
 Install ARPACK-NG:
 
-  cd arpack-ng
+  ```cd arpack-ng
   sh bootstrap
   cp /path/to/pkg.m4 m4/ (this was /usr/share/aclocal/pkg.m4 for me)
   autoreconf -if
   ./configure
   make
   sudo make install
-  cd ../..`
+  cd ../..
+  ```
 
 ## And finally... WGMS3D installation
 
 Clone this repository, and install WGMS3D:
 
-  cd wgms3d
+  ```cd wgms3d
   ./configure --with-superlu=/path/to/superlu --with-arpack-ng=/path/to/arpack-ng
   autoreconf -if
   make
   sudo make install
   sudo ldconfig # necessary for first run
-  cd ../..`
+  cd ../..
+  ```
 
 Also consider installing [pyMode](https://github.com/smartalecH/pymode), a Python module for working with WGMS3D.
 
