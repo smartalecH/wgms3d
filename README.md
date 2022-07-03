@@ -46,7 +46,7 @@ Install SUPERLU:
 
 Clone the ARPACK-NG repository:
 
-```git clone https:/github.com/opencollab/arpack-ng.git```
+```git clone https://github.com/opencollab/arpack-ng.git```
 
 Install ARPACK-NG:
 
