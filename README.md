@@ -65,7 +65,7 @@ Install ARPACK-NG:
 Clone this repository, and install WGMS3D:
 
   ```cd wgms3d
-  ./configure --with-superlu=/path/to/superlu --with-arpack-ng=/path/to/arpack-ng
+  ./configure --with-superlu=/path/to/superlu --with-arpack=/path/to/arpack-ng
   autoreconf -if
   make
   sudo make install
