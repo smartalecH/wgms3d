@@ -38,9 +38,9 @@ extern "C"
 				       int *incx, double *y, int *incy);
     extern void F77_FUNC(zaxpy,ZAXPY) (int *n, std::complex<double> *alpha, std::complex<double> *x,
 				       int *incx, std::complex<double> *y, int *incy);
-    extern void F77_FUNC(dgemm,DGEMM) (char *TRANSA, char *TRANSB, int *M, int *N, int *K,
-				       double *ALPHA, double *A, int *LDA, double *B, int *LDB,
-				       double *BETA, double *C, int *LDC);
+    extern int F77_FUNC(dgemm,DGEMM) (const char *TRANSA, const char *TRANSB, const int *M, const int *N, const int *K,
+				       const double *ALPHA, const double *A, const int *LDA, const double *B, const int *LDB,
+				       const double *BETA, double *C, const int *LDC);
     extern void F77_FUNC(zgemm,ZGEMM) (char *TRANSA, char *TRANSB, int *M, int *N, int *K,
 				       std::complex<double> *ALPHA, std::complex<double> *A, int *LDA,
 				       std::complex<double> *B, int *LDB,
